@@ -9,6 +9,10 @@ $accent-color: #ff5200;
 
 a {
   color: $accent-color;
+
+  &:hover {
+    color: lighten($accent-color, 10%);
+  }
 }
 
 /* Space out content a bit */
@@ -76,10 +80,25 @@ body {
 .btn-ten-october {
   color: #fff;
   background-color: $accent-color;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.nav {
+  float: right;
+  margin-top: 20px;
+}
+
+.clients {
+  a {
+    display: inline-block;
+  }
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 480px) {
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -94,5 +113,14 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #logo {
+    padding-top: 20px;
+  }
+  .nav {
+    display: none;
   }
 }
