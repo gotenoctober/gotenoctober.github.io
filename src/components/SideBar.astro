@@ -7,15 +7,29 @@ const { sideBarActiveItemID } = Astro.props;
 
 <div class="drawer-side z-40">
   <label for="my-drawer" class="drawer-overlay"></label>
-  <aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
-    <div class="w-fit mx-auto mt-5 mb-6">
+  <aside
+    class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col"
+  >
+    <div class="w-fit mx-auto mt-5 mb-1">
       <a href="/">
-        <div class="avatar transition ease-in-out hover:scale-[102%] block m-auto">
+        <div class="avatar block m-auto">
           <div class="w-[8.5rem]">
-            <Image class="mask mask-circle" aspectRatio="1:1" format="webp" width={300} height={300} src="/mugshot.jpg" alt="Profile image" />
+            <Image
+              class="mask mask-circle"
+              aspectRatio="1:1"
+              format="jpg"
+              width={300}
+              height={300}
+              src="/mugshot.jpg"
+              alt="Profile image"
+            />
           </div>
         </div>
       </a>
+    </div>
+    <h2 class="text-3xl mt-3 font-bold text-center">Jeff Browning</h2>
+    <div class="flex justify-center my-3">
+      <div class="badge badge-lg badge-success">Available for hire</div>
     </div>
     <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
     <SideBarFooter />

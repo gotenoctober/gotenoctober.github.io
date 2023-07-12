@@ -1,0 +1,38 @@
+---
+import { ProjectSchema } from "../content/config";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props extends Omit<ProjectSchema, 'order'|'description'> {}
+
+const { title, tags, thumbnail, screenshots } =
+  Astro.props;
+// import { Image } from "@astrojs/image/components";
+---
+
+<BaseLayout title={`Project: ${title}`}>
+  <main class="md:flex md:justify-center">
+    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+      <!-- {
+        heroImage && (
+        <Image
+            aspectRatio={"16:9"}
+            width={750}
+            height={422}
+            format="webp"
+            src={heroImage}
+            alt={title}
+            class="w-full mb-6"
+          />
+        )
+      } -->
+      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
+      <div>
+        {tags && tags.map((tag: string) =>
+          (<span class="badge badge-secondary badge-lg mr-1 mb-2">{tag}</span>)
+        )}
+      </div>
+      <div class="divider my-2" />
+      <slot />
+    </article>
+  </main>
+</BaseLayout>

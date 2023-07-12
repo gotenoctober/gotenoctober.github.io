@@ -1,77 +1,109 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+// import HorizontalCard from "../components/HorizontalCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import TimeLine from "../components/TimeLine.astro";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const featuredProjects = projects.slice(0, 3);
+const skills = [
+  "React Native",
+  "React / Redux",
+  "Typescript / Node.js",
+  "VueJS / Vuex",
+  "d3",
+  "Ruby on Rails",
+  "Elixir",
+  "GraphQL",
+  "Slack API",
+  "Stripe API",
+  "AWS",
+  "Google Cloud / Firebase",
+  "PostgreSQL",
+  "Redis",
+  "Docker / dokku",
+];
 ---
 
 <BaseLayout sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
-    <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Jeff Browning</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Entrepreneur</div>
+    <h1 class="w-full">👋 Hi I'm Jeff</h1>
     <div class="py-2">
-      <text class="text-lg">
-        This is <b>Astrofy</b> a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS.
-        Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed. I hope you find
-        it useful!
-      </text>
+      <p class="text-lg mb-3">
+        I'm a highly-experienced team manager and software developer
+        specializing in web and mobile applications. With over 10 years of
+        experience, I have enjoyed building intuitive well-tested products for
+        consumers and businesses in a variety of industries.
+      </p>
+      <p class="text-lg">
+        As a <em>true</em> full-stack developer I am comfortable with working within
+        all aspects of a sophisticated application including web and mobile frontend,
+        backend, and server operations.
+      </p>
     </div>
-    <div class="mt-8">
-      <a class="btn btn-primary" href="https://twitter.com/manuelernestog" target="_blank"> Let's connect!</a>
-      <a href="https://github.com/manuelernestog/astrofy" target="_blank" class="btn btn-outline ml-5">
-        Get This template
+    <div class="mt-8 flex justify-between">
+      <a class="btn btn-primary" href="/resume.pdf" target="_blank">
+        Let's connect!
+      </a>
+      <a href="/resume.pdf" class="btn btn-outline btn-primary ml-5" download>
+        Download Resume / CV
       </a>
     </div>
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  <h2 class="w-full">Skills</h2>
+
+  <div class="mb-4">
+    {
+      skills.map((skill) => (
+        <span class="badge badge-secondary badge-lg mr-1 mb-2">{skill}</span>
+      ))
+    }
   </div>
 
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
+  <h2 class="w-full">Featured projects</h2>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  <div class="mb-2">
+    {
+      featuredProjects.map((project) => (
+        <>
+          <ProjectCard project={project.data} />
+          <div class="divider my-0" />
+        </>
+      ))
+    }
   </div>
 
-  {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + post.slug}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+  <h2 class="w-full">Experience</h2>
+
+  <div class="time-line-container mb-4">
+    <TimeLine title="Owner, Ten October LLC" subtitle="2011 — Present">
+      I founded Ten October to provide software development services for web and
+      mobile applications. Notable projects are outlined above.
+    </TimeLine>
+    <TimeLine title="Mad Mimi" subtitle="2012 — 2014">
+      Full-stack development primarily utilizing Ruby on Rails and PrototypeJS.
+      I was initially responsible for creating Mad Mimi's Etsy product
+      integration and later led projects to improve analytics and implement
+      purchase/ checkout features. I voluntarily left Mad Mimi after it was
+      purchased by GoDaddy.
+    </TimeLine>
+    <TimeLine title="Dead-end Corporate Job" subtitle="2008 — 2012">
+      TPS reports, mostly.
+    </TimeLine>
+  </div>
+
+  <h2 class="text-3xl w-full font-bold mb-4">Education</h2>
+
+  <div class="time-line-container">
+    <TimeLine
+      title="Brigham Young University"
+      subtitle="2008: B.S. Information Systems Management"
+    >
+      Go Cougars
+    </TimeLine>
+  </div>
 </BaseLayout>

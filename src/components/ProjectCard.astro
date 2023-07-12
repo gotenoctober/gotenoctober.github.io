@@ -1,0 +1,18 @@
+---
+import { Image } from "@astrojs/image/components";
+
+const { project } = Astro.props;
+---
+
+<div class="project-card">
+  <h3>{project.title}</h3>
+  <div>
+    {
+      project.tags &&
+        project.tags.map((tag: string) => (
+          <span class="badge badge-secondary badge-lg mr-1 mb-2">{tag}</span>
+        ))
+    }
+  </div>
+  <p class="mt-0">{project.description}</p>
+</div>
