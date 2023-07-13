@@ -1,0 +1,13 @@
+---
+import { CONTACT_URL } from "../config";
+
+const {
+  text = "Get in touch",
+  type = "primary",
+  class: classNames,
+} = Astro.props;
+
+const classList = ["btn", `btn-${type}`, classNames];
+---
+
+<a class:list={classList} href={CONTACT_URL} target="_blank">{text}</a>

@@ -1,5 +1,5 @@
 ---
-import { CONTACT_URL } from "../config";
+import ContactButton from "./ContactButton.astro";
 const { sideBarActiveItemID } = Astro.props;
 const activeClass = "active";
 ---
@@ -14,7 +14,7 @@ const activeClass = "active";
   </ul>
 
   <div class="px-2 mt-5">
-    <a class="btn btn-primary w-full" href={CONTACT_URL}>Get in touch</a>
+    <ContactButton class="w-full" />
   </div>
 </div>
 

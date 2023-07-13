@@ -1,8 +1,10 @@
 ---
-import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
+import { SITE_TITLE } from "../config";
+import SideBarFooter from "./SideBarFooter.astro";
 import SideBarMenu from "./SideBarMenu.astro";
 import mugshot from "~/assets/images/mugshot.jpg";
+
 const { sideBarActiveItemID } = Astro.props;
 ---
 
@@ -16,7 +18,7 @@ const { sideBarActiveItemID } = Astro.props;
         <div class="avatar block m-auto">
           <div class="w-[8.5rem]">
             <Image
-              class="mask mask-circle"
+              class="rounded-full"
               format="jpg"
               width={300}
               height={300}
@@ -27,9 +29,12 @@ const { sideBarActiveItemID } = Astro.props;
         </div>
       </a>
     </div>
-    <h2 class="text-3xl mt-3 font-bold text-center">Jeff Browning</h2>
-    <div class="flex justify-center my-3">
-      <div class="badge badge-lg badge-success">Available for hire</div>
+    <h2 class="text-3xl mt-3 font-bold text-center">{SITE_TITLE}</h2>
+    <div class="my-3">
+      <p class="text-center">
+        <span class="badge badge-lg badge-success">Available</span>
+      </p>
+      <p class="divider text-neutral">for new projects</p>
     </div>
     <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
     <SideBarFooter />
