@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+
+const thumbnailWidth = 750;
+const thumbnailClass = "max-w-full md:max-w-[13rem]";
+const thumbnailFormat = "png";
+const { project } = Astro.props;
+const { title, description, thumbnail, tags, link } = project;
+const thumbnailAlt = `${title} thumbnail`;
+---
+
+<div class="project-card">
+  <div class="hero-content flex-col md:flex-row">
+    {
+      thumbnail &&
+        (link ? (
+          <a href={link} target="_blank">
+            <Image
+              class={thumbnailClass}
+              src={thumbnail}
+              width={thumbnailWidth}
+              format={thumbnailFormat}
+              alt={thumbnailAlt}
+            />
+          </a>
+        ) : (
+          <Image
+            class={thumbnailClass}
+            src={thumbnail}
+            width={thumbnailWidth}
+            format={thumbnailFormat}
+            alt={thumbnailAlt}
+          />
+        ))
+    }
+    <div class="grow w-full">
+      <h3>
+        {
+          link ? (
+            <a href={link} target="_blank">
+              {title}
+            </a>
+          ) : (
+            title
+          )
+        }
+      </h3>
+      <div>
+        {
+          tags &&
+            tags.map((tag: string) => (
+              <span class="badge badge-secondary mr-1 mb-1">{tag}</span>
+            ))
+        }
+      </div>
+      <p class="mt-0">{description}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import { SITE_TITLE } from "../config";
+import SideBarFooter from "./SideBarFooter.astro";
+import SideBarMenu from "./SideBarMenu.astro";
+import mugshot from "~/assets/images/mugshot.jpg";
+
+const { sideBarActiveItemID } = Astro.props;
+---
+
+<div class="drawer-side z-40">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <aside
+    class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col"
+  >
+    <div class="w-fit mx-auto mt-5 mb-1">
+      <a href="/">
+        <div class="avatar block m-auto">
+          <div class="w-[8.5rem]">
+            <Image
+              class="rounded-full"
+              format="jpg"
+              width={300}
+              height={300}
+              src={mugshot}
+              alt="Profile image"
+            />
+          </div>
+        </div>
+      </a>
+    </div>
+    <h2 class="text-3xl mt-3 font-bold text-center">{SITE_TITLE}</h2>
+    <div class="my-3">
+      <p class="text-center">
+        <span class="badge badge-lg badge-success">Available</span>
+      </p>
+      <p class="divider text-neutral">for new projects</p>
+    </div>
+    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+    <SideBarFooter />
+  </aside>
+</div>

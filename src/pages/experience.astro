@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLine from "../components/TimeLine.astro";
+---
+
+<BaseLayout title="Experience" sideBarActiveItemID="experience">
+  <div class="md:flex">
+    <h1 class="w-full">Experience</h1>
+    <a href="/resume.pdf" class="btn btn-outline btn-primary mb-5" download>
+      Download Resume / CV
+    </a>
+  </div>
+
+  <div class="time-line-container mb-4">
+    <TimeLine title="Owner, Ten October LLC" subtitle="2011 — Present">
+      I founded Ten October to provide software development services for web and
+      mobile applications. Notable projects are outlined above.
+    </TimeLine>
+    <TimeLine title="Mad Mimi" subtitle="2012 — 2014">
+      Full-stack development primarily utilizing Ruby on Rails and PrototypeJS.
+      I was initially responsible for creating Mad Mimi's Etsy product
+      integration and later led projects to improve analytics and implement
+      purchase/ checkout features. I voluntarily left Mad Mimi after it was
+      purchased by GoDaddy.
+    </TimeLine>
+    <TimeLine title="Dead-end Corporate Job" subtitle="2008 — 2012">
+      TPS reports, mostly.
+    </TimeLine>
+  </div>
+
+  <h2 class="text-3xl w-full font-bold mb-4">Education</h2>
+
+  <div class="time-line-container">
+    <TimeLine
+      title="Brigham Young University"
+      subtitle="2008: B.S. Information Systems Management"
+    >
+      Go Cougars
+    </TimeLine>
+  </div>
+</BaseLayout>
