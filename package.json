@@ -1,6 +1,6 @@
 {
-  "name": "astrofy",
-  "description": "Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed.",
+  "name": "tenoctoberdotcom",
+  "description": "Derived from Astrofy, a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed.",
   "type": "module",
   "version": "2.5.1",
   "private": true,
@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
-    "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^1.3.3",
     "@astrojs/tailwind": "^4.0.0",
     "astro": "^2.8.1",
