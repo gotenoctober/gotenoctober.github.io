@@ -9,17 +9,16 @@ const blogSchema = z.object({
   badge: z.string().optional(),
 });
 
-export const projectSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  order: z.number(),
-  thumbnail: z.string().optional(),
-  screenshots: z.array(z.string()).optional(),
-  tags: z.array(z.string()).optional(),
-});
-
-export type BlogSchema = z.infer<typeof blogSchema>;
-export type ProjectSchema = z.infer<typeof projectSchema>;
+export const projectSchema = ({ image }) =>
+  z.object({
+    title: z.string(),
+    description: z.string(),
+    link: z.string().url().optional(),
+    thumbnail: image().optional(),
+    screenshots: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    order: z.number(),
+  });
 
 const blogCollection = defineCollection({
   type: "content",

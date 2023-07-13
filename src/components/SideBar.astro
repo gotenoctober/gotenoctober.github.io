@@ -1,7 +1,8 @@
 ---
 import SideBarFooter from "./SideBarFooter.astro";
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import SideBarMenu from "./SideBarMenu.astro";
+import mugshot from "~/assets/images/mugshot.jpg";
 const { sideBarActiveItemID } = Astro.props;
 ---
 
@@ -16,11 +17,10 @@ const { sideBarActiveItemID } = Astro.props;
           <div class="w-[8.5rem]">
             <Image
               class="mask mask-circle"
-              aspectRatio="1:1"
               format="jpg"
               width={300}
               height={300}
-              src="/mugshot.jpg"
+              src={mugshot}
               alt="Profile image"
             />
           </div>

@@ -18,6 +18,7 @@ module.exports = {
         "success": "#489380",
         "warning": "#eb8014",
         "error": "#e01a2e",
+        "--animation-btn": "0"
       },
       mythemeDark: {
         "primary": "#ff5200",
@@ -29,6 +30,7 @@ module.exports = {
         "success": "#489380",
         "warning": "#eb8014",
         "error": "#e01a2e",
+        "--animation-btn": "0"
       },
     }],
     darkTheme: "mythemeDark", // name of one of the included themes for dark mode

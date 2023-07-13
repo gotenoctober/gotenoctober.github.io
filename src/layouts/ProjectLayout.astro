@@ -1,12 +1,12 @@
 ---
-import { ProjectSchema } from "../content/config";
+import { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 
-export interface Props extends Omit<ProjectSchema, 'order'|'description'> {}
+export interface Props
+  extends Omit<CollectionEntry<"projects">, "order" | "description"> {}
 
-const { title, tags, thumbnail, screenshots } =
-  Astro.props;
-// import { Image } from "@astrojs/image/components";
+const { title, tags, thumbnail, screenshots } = Astro.props;
+// import { Image } from "astro:assets";
 ---
 
 <BaseLayout title={`Project: ${title}`}>
@@ -27,11 +27,16 @@ const { title, tags, thumbnail, screenshots } =
       } -->
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
       <div>
-        {tags && tags.map((tag: string) =>
-          (<span class="badge badge-secondary badge-lg mr-1 mb-2">{tag}</span>)
-        )}
+        {
+          tags &&
+            tags.map((tag: string) => (
+              <span class="badge badge-secondary badge-lg mr-1 mb-2">
+                {tag}
+              </span>
+            ))
+        }
       </div>
-      <div class="divider my-2" />
+      <div class="divider my-2"></div>
       <slot />
     </article>
   </main>
