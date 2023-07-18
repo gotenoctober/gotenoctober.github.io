@@ -16,6 +16,6 @@
   }
 }
 
-.time-line-container > div:last-child .education__time > .education__line {
+.timeline-container > div:last-child .timeline-line-container > .timeline-line {
   display: none;
 }

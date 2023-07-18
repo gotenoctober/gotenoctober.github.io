@@ -3,14 +3,16 @@ const { title, subtitle } = Astro.props;
 ---
 
 <div class="flex">
-  <div class="education__time">
+  <div class="timeline-line-container">
     <span class="w-4 h-4 bg-primary block rounded-full mt-1"></span>
-    <span class="education__line bg-primary block h-full w-[2px] translate-x-[7px]"></span>
+    <span
+      class="timeline-line bg-primary block h-full w-[2px] translate-x-[7px]"
+    ></span>
   </div>
-  <div class="experience__data bd-grid px-5">
+  <div class="timeline-description-container bd-grid px-5">
     <h3 class="font-semibold mb-1">{title}</h3>
     <span class="font-light text-sm">{subtitle}</span>
-    <p class="my-2 text-justify">
+    <p class="my-2">
       <slot />
     </p>
   </div>
