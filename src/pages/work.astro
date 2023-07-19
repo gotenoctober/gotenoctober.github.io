@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ContactButton from "../components/ContactButton.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout title="Recent work" sideBarActiveItemID="work">
+  <h1 id="recent-projects" class="w-full">Recent work</h1>
+
+  <div class="mb-2">
+    {
+      projects.map((project, index) => (
+        <>
+          <ProjectCard project={project.data} />
+          {index !== projects.length - 1 && <div class="divider my-0" />}
+        </>
+      ))
+    }
+  </div>
+
+  <h2 class="w-full text-center my-10">Ready to work together?</h2>
+
+  <div class="flex justify-center">
+    <ContactButton class="btn-lg" />
+  </div>
+</BaseLayout>

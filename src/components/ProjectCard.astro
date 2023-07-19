@@ -10,7 +10,7 @@ const thumbnailAlt = `${title} thumbnail`;
 ---
 
 <div class="project-card">
-  <div class="hero-content flex-col md:flex-row">
+  <div class="hero-content flex-col items-start md:flex-row">
     {
       thumbnail &&
         (link ? (
@@ -53,7 +53,9 @@ const thumbnailAlt = `${title} thumbnail`;
             ))
         }
       </div>
-      <p class="mt-0">{description}</p>
+      <div class="prose mt-o">
+        <p>{description}</p>
+      </div>
     </div>
   </div>
 </div>

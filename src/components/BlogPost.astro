@@ -4,7 +4,7 @@ import { presentDate } from "../presenters/presentDate";
 interface Props {
   title: string;
   postedAt: Date;
-  draft: boolean;
+  draft?: boolean;
   permalink?: string;
 }
 
@@ -12,11 +12,13 @@ const { title, draft, postedAt, permalink } = Astro.props;
 ---
 
 <div class="post">
-  <h2>
+  <h2 class="mb-0">
     {permalink ? <a href={permalink}>{title}</a> : title}
     {draft && <span class="badge badge-warning">DRAFT</span>}
   </h2>
-  <time class="opacity-70">{presentDate(postedAt)}</time>
+  <div class="my-2">
+    <time class="opacity-70">{presentDate(postedAt)}</time>
+  </div>
 
   <div class="prose">
     <slot />

@@ -1,82 +1,52 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import BlogPost from "../components/BlogPost.astro";
 import ContactButton from "../components/ContactButton.astro";
 
-const projects = (await getCollection("projects")).sort(
-  (a, b) => a.data.order - b.data.order
-);
-const skills = [
-  "React Native",
-  "Ruby on Rails",
-  "Elixir",
-  "Phoenix Framework",
-  "VueJS / Vuex",
-  "React / Redux",
-  "Typescript / Node.js",
-  "d3",
-  "Slack API",
-  "Stripe API",
-  "AWS",
-  "Google Cloud",
-  "Firebase",
-  "PostgreSQL",
-  "Redis",
-  "Docker / dokku",
-];
+const posts = await getCollection("blog");
+
+posts.sort((a, b) => a.data.postedAt.getTime() - b.data.postedAt.getTime());
+
+const latestPosts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
+  <div class="my-5">
     <h1 class="w-full">👋 Hi I'm Jeff</h1>
-    <div class="py-2">
+    <div class="pt-2 prose">
       <p class="text-lg mb-3">
-        I'm a highly-experienced team manager and software developer
-        specializing in web and mobile applications. With over 10 years of
-        experience, I have enjoyed building intuitive well-tested products for
-        consumers and businesses in a variety of industries.
+        I'm a product-focused team manager and full-stack software developer
+        specializing in web and mobile applications. As a <em>true</em> full-stack
+        developer I am comfortable with working within all aspects of a sophisticated
+        application including web and mobile frontend, backend, and server operations.
       </p>
-      <p class="text-lg">
-        As a <em>true</em> full-stack developer I am comfortable with working within
-        all aspects of a sophisticated application including web and mobile frontend,
-        backend, and server operations.
-      </p>
-    </div>
-    <div class="mt-8 flex flex-col md:flex-row md:justify-between lg:hidden">
-      <ContactButton />
-      <a href="/resume.pdf" class="btn btn-outline btn-primary mt-2" download>
-        Download Resume / CV
-      </a>
+      <p>Need help with your latest project?</p>
+      <p class="text-center my-5"><ContactButton class="btn-md" /></p>
+      <div class="divider"></div>
     </div>
   </div>
 
-  <h2 class="w-full">Skills</h2>
+  {
+    latestPosts.map(async (post, index: number) => {
+      const data = post.data;
+      const { Content } = await post.render();
 
-  <div class="mb-4">
-    {
-      skills.map((skill) => (
-        <span class="badge badge-secondary badge-lg mr-1 mb-2">{skill}</span>
-      ))
-    }
-  </div>
+      return (
+        <div class="post-container">
+          <BlogPost
+            title={data.title}
+            draft={data.draft}
+            postedAt={data.postedAt}
+            permalink={`/blog/${post.slug}`}
+          >
+            <Content />
+          </BlogPost>
+          {index < latestPosts.length - 1 && <div class="divider my-10" />}
+        </div>
+      );
+    })
+  }
 
-  <h2 id="recent-projects" class="w-full">Recent clients</h2>
-
-  <div class="mb-2">
-    {
-      projects.map((project, index) => (
-        <>
-          <ProjectCard project={project.data} />
-          {index !== projects.length - 1 && <div class="divider my-0" />}
-        </>
-      ))
-    }
-  </div>
-
-  <h2 class="w-full text-center my-10">Ready to work together?</h2>
-
-  <div class="flex justify-center">
-    <ContactButton class="btn-lg" />
-  </div>
+  <p class="text-center mt-5"><a href="/blog" class="btn">More posts</a></p>
 </BaseLayout>

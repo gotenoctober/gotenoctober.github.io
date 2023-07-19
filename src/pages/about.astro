@@ -1,17 +1,63 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLine from "../components/TimeLine.astro";
+import ContactButton from "../components/ContactButton.astro";
+
+const skills = [
+  "React Native",
+  "Ruby on Rails",
+  "Elixir",
+  "Phoenix Framework",
+  "VueJS / Vuex",
+  "React / Redux",
+  "Typescript / Node.js",
+  "d3",
+  "Slack API",
+  "Stripe API",
+  "AWS",
+  "Google Cloud",
+  "Firebase",
+  "PostgreSQL",
+  "Redis",
+  "Docker / dokku",
+];
 ---
 
-<BaseLayout title="Experience" sideBarActiveItemID="experience">
+<BaseLayout title="About me" sideBarActiveItemID="about">
+  <div class="my-5">
+    <h1 class="w-full">About me</h1>
+    <div class="pt-2 prose">
+      <p class="text-lg mb-3">
+        I'm a highly-experienced team manager and software developer
+        specializing in web and mobile applications. With over 10 years of
+        experience, I have enjoyed building intuitive well-tested products for
+        consumers and businesses in a variety of industries.
+      </p>
+      <p class="text-lg">
+        Outside of development I enjoy spending time with my family, playing the
+        travel points game, and the occasional trashy TV.
+      </p>
+    </div>
+  </div>
+
+  <h2 class="w-full">Skills</h2>
+
+  <div class="mb-5">
+    {
+      skills.map((skill) => (
+        <span class="badge badge-secondary badge-lg mr-1 mb-2">{skill}</span>
+      ))
+    }
+  </div>
+
   <div class="md:flex">
-    <h1 class="w-full">Experience</h1>
+    <h2 class="w-full">Experience</h2>
     <a href="/resume.pdf" class="btn btn-outline btn-primary mb-5" download>
       Download Resume / CV
     </a>
   </div>
 
-  <div class="timeline-container mb-4">
+  <div class="timeline-container mb-5">
     <TimeLine title="Owner, Ten October LLC" subtitle="2011 — Present">
       I founded Ten October to provide software development services for web and
       mobile applications. Notable projects are outlined <a
