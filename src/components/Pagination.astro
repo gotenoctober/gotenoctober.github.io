@@ -1,0 +1,34 @@
+---
+import { Page } from "astro";
+
+interface Props {
+  page: Page;
+  prevPageLabel?: string;
+  nextPageLabel?: string;
+}
+
+const { page, prevPageLabel = "Prev", nextPageLabel = "Next" } = Astro.props;
+---
+
+<div class="pagination flex justify-center mt-10">
+  <div class="join">
+    {
+      page.url.prev ? (
+        <a class="join-item btn" href={page.url.prev}>
+          {prevPageLabel}
+        </a>
+      ) : (
+        <a class="join-item btn btn-disabled">{prevPageLabel}</a>
+      )
+    }
+    {
+      page.url.next ? (
+        <a class="join-item btn" href={page.url.next}>
+          {nextPageLabel}
+        </a>
+      ) : (
+        <a class="join-item btn btn-disabled">{nextPageLabel}</a>
+      )
+    }
+  </div>
+</div>
