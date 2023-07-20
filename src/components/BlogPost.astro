@@ -20,7 +20,7 @@ const { title, draft, pubDate, permalink } = Astro.props;
     <time class="opacity-70">{presentDate(pubDate)}</time>
   </div>
 
-  <div class="prose">
+  <div class="prose max-w-none">
     <slot />
   </div>
 </div>
