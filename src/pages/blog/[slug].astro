@@ -19,7 +19,7 @@ interface Props {
 interface PostData {
   title: string;
   pubDate: Date;
-  draft: boolean;
+  draft?: boolean;
 }
 
 const { post } = Astro.props;

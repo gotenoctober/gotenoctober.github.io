@@ -1,16 +1,21 @@
 ---
+import { Page } from "astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import Pagination from "../../components/Pagination.astro";
 
 export const getStaticPaths = async ({ paginate }) => {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
 
   posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
 
   return paginate(posts, { pageSize: 2 });
 };
+
+interface Props {
+  page: Page;
+}
 
 const { page } = Astro.props;
 const pageDataLength = page.data.length;
