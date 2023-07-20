@@ -6,7 +6,7 @@ import ContactButton from "../components/ContactButton.astro";
 
 const posts = await getCollection("blog");
 
-posts.sort((a, b) => a.data.postedAt.getTime() - b.data.postedAt.getTime());
+posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
 
 const latestPosts = posts.slice(0, 3);
 ---
@@ -37,7 +37,7 @@ const latestPosts = posts.slice(0, 3);
           <BlogPost
             title={data.title}
             draft={data.draft}
-            postedAt={data.postedAt}
+            pubDate={data.pubDate}
             permalink={`/blog/${post.slug}`}
           >
             <Content />

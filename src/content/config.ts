@@ -6,7 +6,7 @@ const blogSchema = ({ image }) =>
     previewText: z.string().optional(),
     heroImage: image().optional(),
     tags: z.array(z.string()).optional(),
-    postedAt: z.coerce.date(),
+    pubDate: z.coerce.date(),
     draft: z.boolean().optional(),
   });
 

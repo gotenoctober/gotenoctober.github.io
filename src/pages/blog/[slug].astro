@@ -18,7 +18,7 @@ interface Props {
 
 interface PostData {
   title: string;
-  postedAt: Date;
+  pubDate: Date;
   draft: boolean;
 }
 
@@ -28,7 +28,7 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout title={data.title} sideBarActiveItemID="blog">
-  <BlogPost title={data.title} draft={data.draft} postedAt={data.postedAt}>
+  <BlogPost title={data.title} draft={data.draft} pubDate={data.pubDate}>
     <Content />
   </BlogPost>
 </BaseLayout>

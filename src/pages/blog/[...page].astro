@@ -7,7 +7,7 @@ import Pagination from "../../components/Pagination.astro";
 export const getStaticPaths = async ({ paginate }) => {
   const posts = await getCollection("blog");
 
-  posts.sort((a, b) => a.data.postedAt.getTime() - b.data.postedAt.getTime());
+  posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
 
   return paginate(posts, { pageSize: 2 });
 };
@@ -28,7 +28,7 @@ const pageDataLength = page.data.length;
           <BlogPost
             title={data.title}
             draft={data.draft}
-            postedAt={data.postedAt}
+            pubDate={data.pubDate}
             permalink={post.slug}
           >
             <Content />

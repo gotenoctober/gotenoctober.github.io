@@ -3,12 +3,12 @@ import { presentDate } from "../presenters/presentDate";
 
 interface Props {
   title: string;
-  postedAt: Date;
+  pubDate: Date;
   draft?: boolean;
   permalink?: string;
 }
 
-const { title, draft, postedAt, permalink } = Astro.props;
+const { title, draft, pubDate, permalink } = Astro.props;
 ---
 
 <div class="post">
@@ -17,7 +17,7 @@ const { title, draft, postedAt, permalink } = Astro.props;
     {draft && <span class="badge badge-warning">DRAFT</span>}
   </h2>
   <div class="my-2">
-    <time class="opacity-70">{presentDate(postedAt)}</time>
+    <time class="opacity-70">{presentDate(pubDate)}</time>
   </div>
 
   <div class="prose">
