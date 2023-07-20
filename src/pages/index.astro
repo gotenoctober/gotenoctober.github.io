@@ -6,7 +6,7 @@ import ContactButton from "../components/ContactButton.astro";
 
 const posts = await getCollection("blog");
 
-posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
 const latestPosts = posts.slice(0, 3);
 ---
