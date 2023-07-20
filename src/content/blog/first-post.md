@@ -5,9 +5,7 @@ pubDate: 2023-07-19T17:00:00Z
 
 Hello! Glad to have you here. Welcome to my brand new personal portfolio. Who am I? I'm Jeff, a product-focused full-stack developer of web and mobile apps. Software development can be quite the journey so I'm hoping to offer a little bit of the insight that I've learned over the 10+ years that I've been at this game.
 
-It's been quite a while since I've built a personal site for myself so over the first series of posts I'm going to outline my process and share some of the highs and lows along the way.
-
-For those that are curious, here's the current stack:
+It's been quite a while since I've built a personal site for myself. After a bit of experimenting this is the stack I landed on:
 
 - [Astro](https://astro.build)
 - [tailwindcss](https://tailwindcss.com)
