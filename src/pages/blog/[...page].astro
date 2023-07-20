@@ -1,0 +1,48 @@
+---
+import { Page } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import Pagination from "../../components/Pagination.astro";
+
+export const getStaticPaths = async ({ paginate }) => {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+
+  return paginate(posts, { pageSize: 2 });
+};
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+const pageDataLength = page.data.length;
+---
+
+<BaseLayout title="Blog" sideBarActiveItemID="blog">
+  <h1>Blog</h1>
+  {
+    page.data.map(async (post, index: number) => {
+      const data = post.data;
+      const { Content } = await post.render();
+
+      return (
+        <div class="post-container">
+          <BlogPost
+            title={data.title}
+            draft={data.draft}
+            pubDate={data.pubDate}
+            permalink={post.slug}
+          >
+            <Content />
+          </BlogPost>
+          {index < pageDataLength - 1 && <div class="divider my-10" />}
+        </div>
+      );
+    })
+  }
+
+  <Pagination page={page} />
+</BaseLayout>

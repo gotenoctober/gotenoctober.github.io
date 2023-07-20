@@ -7,9 +7,10 @@ const activeClass = "active";
 <div class="grow shrink">
   <ul class="menu menu-md overflow-y-auto">
     <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
+    <li><a class="py-3 text-base" id="blog" href="/blog">Blog</a></li>
+    <li><a class="py-3 text-base" id="work" href="/work">Work</a></li>
     <li>
-      <a class="py-3 text-base" id="experience" href="/experience">Experience</a
-      >
+      <a class="py-3 text-base" id="about" href="/about">About me</a>
     </li>
   </ul>
 
@@ -25,5 +26,9 @@ const activeClass = "active";
   }}
 >
   const activeItemElem = document.getElementById(sideBarActiveItemID);
-  activeItemElem && activeItemElem.classList.add(activeClass);
+
+  if (activeItemElem) {
+    activeItemElem.classList.add(activeClass);
+    activeItemElem.removeAttribute("href");
+  }
 </script>

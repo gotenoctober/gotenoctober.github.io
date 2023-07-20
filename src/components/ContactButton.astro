@@ -1,6 +1,12 @@
 ---
 import { CONTACT_URL } from "../config";
 
+interface Props {
+  text?: string;
+  type?: string;
+  class?: string;
+}
+
 const {
   text = "Get in touch",
   type = "primary",
