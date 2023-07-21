@@ -18,11 +18,11 @@ interface Props {
 }
 
 const { page } = Astro.props;
+console.log("page", page);
 const pageDataLength = page.data.length;
 ---
 
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <h1>Blog</h1>
   {
     page.data.map(async (post, index: number) => {
       const data = post.data;
@@ -34,7 +34,7 @@ const pageDataLength = page.data.length;
             title={data.title}
             draft={data.draft}
             pubDate={data.pubDate}
-            permalink={post.slug}
+            permalink={`/blog/${post.slug}`}
           >
             <Content />
           </BlogPost>

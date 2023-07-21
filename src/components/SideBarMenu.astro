@@ -1,6 +1,6 @@
 ---
 import ContactButton from "./ContactButton.astro";
-const { sideBarActiveItemID } = Astro.props;
+const { sideBarActiveItemID, sidebarPreserveActiveItemHref } = Astro.props;
 const activeClass = "active";
 ---
 
@@ -21,14 +21,18 @@ const activeClass = "active";
 
 <script
   define:vars={{
-    sideBarActiveItemID: sideBarActiveItemID,
-    activeClass: activeClass,
+    sideBarActiveItemID,
+    sidebarPreserveActiveItemHref,
+    activeClass,
   }}
 >
   const activeItemElem = document.getElementById(sideBarActiveItemID);
 
   if (activeItemElem) {
     activeItemElem.classList.add(activeClass);
-    activeItemElem.removeAttribute("href");
+
+    if (!sidebarPreserveActiveItemHref) {
+      activeItemElem.removeAttribute("href");
+    }
   }
 </script>
