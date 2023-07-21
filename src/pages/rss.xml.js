@@ -7,7 +7,7 @@ const parser = new MarkdownIt();
 export async function get(context) {
   const posts = await getCollection('blog');
 
-  posts.sort((a, b) => a.data.pubDate.getTime() - b.data.pubDate.getTime());
+  posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
   return rss({
     title: "Jeff Browning",

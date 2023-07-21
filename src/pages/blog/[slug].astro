@@ -27,8 +27,17 @@ const data: PostData = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={data.title} sideBarActiveItemID="blog">
-  <BlogPost title={data.title} draft={data.draft} pubDate={data.pubDate}>
+<BaseLayout
+  title={data.title}
+  sideBarActiveItemID="blog"
+  sidebarPreserveActiveItemHref={true}
+>
+  <BlogPost
+    title={data.title}
+    draft={data.draft}
+    pubDate={data.pubDate}
+    standalone
+  >
     <Content />
   </BlogPost>
 </BaseLayout>

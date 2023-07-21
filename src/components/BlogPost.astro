@@ -6,16 +6,20 @@ interface Props {
   pubDate: Date;
   draft?: boolean;
   permalink?: string;
+  standalone?: boolean;
 }
 
-const { title, draft, pubDate, permalink } = Astro.props;
+const { title, draft, pubDate, permalink, standalone } = Astro.props;
+
+const TitleTag = standalone ? "h1" : "h2";
+const titleClassNames = standalone ? "" : "mb-0";
 ---
 
 <div class="post">
-  <h2 class="mb-0">
+  <TitleTag class={titleClassNames}>
     {permalink ? <a href={permalink}>{title}</a> : title}
     {draft && <span class="badge badge-warning">DRAFT</span>}
-  </h2>
+  </TitleTag>
   <div class="my-2">
     <time class="opacity-70">{presentDate(pubDate)}</time>
   </div>

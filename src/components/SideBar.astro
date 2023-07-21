@@ -5,7 +5,7 @@ import SideBarFooter from "./SideBarFooter.astro";
 import SideBarMenu from "./SideBarMenu.astro";
 import mugshot from "~/assets/images/mugshot.jpg";
 
-const { sideBarActiveItemID } = Astro.props;
+const { sideBarActiveItemID, sidebarPreserveActiveItemHref } = Astro.props;
 ---
 
 <div class="drawer-side z-40">
@@ -36,7 +36,10 @@ const { sideBarActiveItemID } = Astro.props;
       </p>
       <p class="divider text-neutral">for new projects</p>
     </div>
-    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+    <SideBarMenu
+      sideBarActiveItemID={sideBarActiveItemID}
+      sidebarPreserveActiveItemHref={sidebarPreserveActiveItemHref}
+    />
     <SideBarFooter />
   </aside>
 </div>

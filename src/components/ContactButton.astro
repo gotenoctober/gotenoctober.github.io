@@ -10,10 +10,10 @@ interface Props {
 const {
   text = "Get in touch",
   type = "primary",
-  class: classNames,
+  class: className,
 } = Astro.props;
 
-const classList = ["btn", `btn-${type}`, classNames];
+const classList = ["btn", `btn-${type}`, className];
 ---
 
 <a class:list={classList} href={CONTACT_URL} target="_blank">{text}</a>

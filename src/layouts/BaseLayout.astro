@@ -6,7 +6,14 @@ import SideBar from "../components/SideBar.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
-const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSidebar = true, sideBarActiveItemID } = Astro.props;
+const {
+  image,
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  includeSidebar = true,
+  sideBarActiveItemID,
+  sidebarPreserveActiveItemHref,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +33,14 @@ const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, includeSideba
         </div>
         <Footer />
       </div>
-      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
+      {
+        includeSidebar && (
+          <SideBar
+            sideBarActiveItemID={sideBarActiveItemID}
+            sidebarPreserveActiveItemHref={sidebarPreserveActiveItemHref}
+          />
+        )
+      }
     </div>
   </body>
 </html>
