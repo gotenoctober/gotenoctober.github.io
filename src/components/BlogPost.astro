@@ -16,15 +16,17 @@ const titleClassNames = standalone ? "" : "mb-0";
 ---
 
 <div class="post">
-  <TitleTag class={titleClassNames}>
-    {permalink ? <a href={permalink}>{title}</a> : title}
-    {draft && <span class="badge badge-warning">DRAFT</span>}
-  </TitleTag>
+  <div class="max-w-prose">
+    <TitleTag class:list={[titleClassNames]}>
+      {permalink ? <a href={permalink}>{title}</a> : title}
+      {draft && <span class="badge badge-warning">DRAFT</span>}
+    </TitleTag>
+  </div>
   <div class="my-2">
     <time class="opacity-70">{presentDate(pubDate)}</time>
   </div>
 
-  <div class="prose max-w-none">
+  <div class="prose">
     <slot />
   </div>
 </div>
