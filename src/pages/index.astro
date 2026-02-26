@@ -1,52 +1,35 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
-import ContactButton from "../components/ContactButton.astro";
-
-const posts = await getCollection("blog");
-
-posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-const latestPosts = posts.slice(0, 3);
+import "../styles/global.css";
+const year = new Date().getFullYear();
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="mb-5">
-    <h1 class="w-full">👋 Hi I'm Jeff</h1>
-    <div class="pt-2 prose max-w-prose">
-      <p class="text-lg mb-3">
-        I'm a product-focused team manager and full-stack software developer
-        specializing in web and mobile applications. As a <em>true</em> full-stack
-        developer I am comfortable with working within all aspects of a sophisticated
-        application including web and mobile frontend, backend, and server operations.
-      </p>
-      <p>Need help with your latest project?</p>
-      <p class="text-center my-5"><ContactButton class="btn-md" /></p>
-      <div class="divider"></div>
-    </div>
-  </div>
+<!doctype html>
+<html lang="en" data-theme="mytheme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ten October — Custom Web & Mobile App Development</title>
+    <meta name="description" content="Since 2011, Ten October has helped ground-level startups take their web and mobile apps from 0 to 1." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="h-screen flex flex-col">
+    <main class="flex-1 flex flex-col items-center justify-center px-6">
+      <div class="flex flex-col items-center gap-8 max-w-lg w-full">
+        <img src="/logo.svg" alt="Ten October" class="w-72" />
 
-  {
-    latestPosts.map(async (post, index: number) => {
-      const data = post.data;
-      const { Content } = await post.render();
+        <p class="text-center text-lg leading-relaxed">
+          Since 2011, we've helped ground-level startups take their web and
+          mobile apps from 0&nbsp;to&nbsp;1.
+        </p>
 
-      return (
-        <div class="post-container">
-          <BlogPost
-            title={data.title}
-            draft={data.draft}
-            pubDate={data.pubDate}
-            permalink={`/blog/${post.slug}`}
-          >
-            <Content />
-          </BlogPost>
-          {index < latestPosts.length - 1 && <div class="divider my-10" />}
-        </div>
-      );
-    })
-  }
+        <a href="mailto:support@tenoctober.com" class="btn btn-primary">
+          Get in Touch
+        </a>
+      </div>
+    </main>
 
-  <p class="text-center mt-5"><a href="/blog" class="btn">More posts</a></p>
-</BaseLayout>
+    <footer class="footer footer-center p-6 text-sm opacity-60">
+      <p>&copy; 2011&ndash;{year} Ten October LLC</p>
+    </footer>
+  </body>
+</html>
