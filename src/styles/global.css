@@ -8,15 +8,21 @@
   color-scheme: light;
 
   --color-primary: #ff5200;
+  --color-primary-content: oklch(100% 0 0 / 80%);
   --color-secondary: #d75050;
   --color-accent: #d59b6c;
   --color-neutral: #836b5d;
   --color-base-100: #faf7f5;
+  --color-base-200: #ece4de;
   --color-info: #42aebd;
   --color-success: #489380;
   --color-warning: #eb8014;
   --color-error: #e01a2e;
   --animation-btn: 0;
+  --depth: 0;
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1rem;
 }
 
 @plugin "daisyui/theme" {
@@ -25,6 +31,7 @@
   color-scheme: dark;
 
   --color-primary: #ff5200;
+  --color-primary-content: oklch(100% 0 0 / 80%);
   --color-secondary: #d75050;
   --color-accent: #d59b6c;
   --color-neutral: #836b5d;
@@ -34,6 +41,10 @@
   --color-warning: #eb8014;
   --color-error: #e01a2e;
   --animation-btn: 0;
+  --depth: 0;
+  --radius-box: 1rem;
+  --radius-field: 0.5rem;
+  --radius-selector: 1rem;
 }
 
 @layer base {
