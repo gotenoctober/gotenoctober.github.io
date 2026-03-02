@@ -12,20 +12,48 @@ const year = new Date().getFullYear();
     <meta name="description" content="Since 2011, Ten October has helped ground-level startups take their web and mobile apps from 0 to 1." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col">
     <main class="flex-1 flex flex-col items-center justify-center px-6">
-      <div class="flex flex-col items-center gap-8 max-w-lg w-full">
+      <div class="flex flex-col items-center gap-8 max-w-2xl w-full">
         <img src="/logo.svg" alt="Ten October" class="w-72" />
 
         <p class="text-center text-lg leading-relaxed">
-          Since 2011, we've helped ground-level startups take their web and
-          mobile apps from 0&nbsp;to&nbsp;1.
+          Ten October is a tiny app development studio headquartered in
+          Carmel, Indiana. Since 2011, we've partnered with ground-level
+          startups in ecommerce, social media, email marketing, remote coworking,
+          and GenAI/ML, taking their web and mobile apps
+          from idea to reality to launch.
         </p>
 
         <a href="mailto:support@tenoctober.com" class="btn btn-primary">
           Get in Touch
         </a>
       </div>
+
+      <section class="mt-16 mb-12 flex flex-col items-center gap-8 px-6 w-full max-w-2xl">
+        <h2>Coming Soon</h2>
+
+        <div class="card card-side bg-base-200 w-full">
+          <figure class="p-6 shrink-0">
+            <img
+              src="/lostbooks.jpg"
+              alt="Lost Books"
+              class="rounded-2xl w-28 h-28"
+            />
+          </figure>
+          <div class="card-body">
+            <h3>Lost Books</h3>
+            <p class="text-sm opacity-60 -mt-1">A cozy mobile puzzle game</p>
+            <p>
+              Someone has rearranged the library overnight. Books are missing
+              from every shelf, and the only way to find them is to think. Each
+              puzzle is a grid of colorful shelves, and somewhere in each row,
+              each column, and each colored section, exactly one book is hiding.
+              Your job is to figure out where.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer footer-center p-6 text-sm opacity-60">
