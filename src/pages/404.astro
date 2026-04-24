@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en" data-theme="mytheme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page Not Found — Ten October</title>
+    <meta name="description" content="The page you're looking for doesn't exist." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <main class="flex-1 flex flex-col items-center justify-center px-6 pt-12 sm:pt-0">
+      <div class="flex flex-col items-center gap-8 max-w-2xl w-full text-center">
+        <img src="/logo.svg" alt="Ten October" class="w-72" />
+
+        <h1 class="text-6xl font-bold">404</h1>
+
+        <p class="text-lg leading-relaxed">
+          We couldn't find the page you were looking for.
+        </p>
+
+        <a href="/" class="btn btn-primary uppercase py-5">
+          Back to Home
+        </a>
+      </div>
+    </main>
+
+    <footer class="footer footer-center p-6 text-sm opacity-60">
+      <p>&copy; 2011&ndash;{year} Ten October LLC</p>
+    </footer>
+  </body>
+</html>
