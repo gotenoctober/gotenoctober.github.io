@@ -1,10 +1,12 @@
 ---
 import "../styles/global.css";
+import { APP_STORE_URL, PLAY_STORE_URL } from "../data/lost-books";
+
 const year = new Date().getFullYear();
 ---
 
 <!doctype html>
-<html lang="en" data-theme="mytheme">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +14,7 @@ const year = new Date().getFullYear();
     <meta name="description" content="Since 2011, Ten October has helped ground-level startups take their web and mobile apps from 0 to 1." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-base-100 text-base-content">
     <main class="flex-1 flex flex-col items-center justify-center px-6 pt-12 sm:pt-0">
       <div class="flex flex-col items-center gap-8 max-w-2xl w-full">
         <img src="/logo.svg" alt="Ten October" class="w-72" />
@@ -42,7 +44,7 @@ const year = new Date().getFullYear();
             />
           </figure>
           <div class="card-body max-sm:pt-2">
-            <h3>Lost Books</h3>
+            <h3><a href="/lost-books" class="link link-hover">Lost Books</a></h3>
             <p class="text-sm opacity-60 -mt-1">A cozy mobile puzzle game</p>
             <p>
               Someone has rearranged the library overnight. Books are missing
@@ -51,15 +53,18 @@ const year = new Date().getFullYear();
               each column, and each colored section, exactly one book is hiding.
               Your job is to figure out where.
             </p>
+            <p class="-mt-2">
+              <a href="/lost-books" class="link link-primary text-sm">Learn more &rarr;</a>
+            </p>
             <div class="flex flex-wrap items-center gap-2 mt-2">
-              <a href="https://apps.apple.com/us/app/hide-and-seek-lost-books/id6759506027" target="_blank" rel="noopener noreferrer">
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                   alt="Download on the App Store"
                   class="h-10"
                 />
               </a>
-              <a href="https://play.google.com/store/apps/details?id=com.tenoctober.hideandseeklostbooks" target="_blank" rel="noopener noreferrer">
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                   alt="Get it on Google Play"
