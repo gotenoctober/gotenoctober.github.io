@@ -1,0 +1,568 @@
+---
+import "../styles/global.css";
+import { APP_STORE_URL, PLAY_STORE_URL } from "../data/lost-books";
+
+const year = new Date().getFullYear();
+
+const description = "A cozy logic puzzle for Sudoku lovers. Find the missing books in a paper-cutout library — no timers, no guessing, just deduction.";
+const canonical = "https://tenoctober.com/lost-books";
+const ogImage = "https://tenoctober.com/lost-books/hero.jpg";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Hide & Seek: Lost Books",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "iOS, Android",
+  "description": description,
+  "image": "https://tenoctober.com/lost-books/hero.jpg",
+  "url": canonical,
+  "downloadUrl": canonical,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ten October LLC",
+    "url": "https://tenoctober.com"
+  }
+};
+---
+
+<!doctype html>
+<html lang="en" data-theme="mytheme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hide &amp; Seek: Lost Books — Cozy Mobile Logic Puzzle | Ten October</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content="Hide & Seek: Lost Books — Cozy Mobile Logic Puzzle" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hide & Seek: Lost Books — Cozy Mobile Logic Puzzle" />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="apple-itunes-app" content="app-id=6759506027" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="lb-body min-h-screen flex flex-col">
+    <main class="flex-1">
+      <!-- HERO -->
+      <section class="lb-hero px-6 py-14 md:py-20">
+        <picture class="lb-hero-picture" aria-hidden="true">
+          <source srcset="/lost-books/library-night.jpg" media="(prefers-color-scheme: dark)" />
+          <img
+            src="/lost-books/library-night.jpg"
+            alt=""
+            class="lb-hero-img"
+            fetchpriority="high"
+          />
+        </picture>
+
+        <div class="lb-hero-content">
+          <h1 class="lb-h1">Hide &amp; Seek: Lost Books</h1>
+          <p class="lb-subtagline mt-5">A cozy logic puzzle for Sudoku lovers.</p>
+          <p class="lb-secondary mt-4">
+            Books have gone missing from the shelves. Find every one &mdash;
+            no timers, no guesswork, just deduction.
+          </p>
+
+          <div class="lb-store-row mt-7 flex flex-wrap items-center gap-2 justify-center">
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="Download on the App Store"
+                class="h-12"
+              />
+            </a>
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+                class="h-[72px] -m-2"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREMISE -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="lb-h2">The library is out of order.</h2>
+          <p class="lb-prose">
+            The books have hidden themselves on the shelves. Read the room
+            &mdash; the colors, the rows, the gaps between &mdash; and put each
+            one back where it belongs.
+          </p>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- HOW TO PLAY -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-[minmax(0,4fr)_minmax(0,5fr)] gap-10 md:gap-14 items-center">
+          <div class="lb-screenshot-wrap">
+            <img
+              src="/lost-books/screenshot-puzzle.png"
+              alt="In-progress Lost Books puzzle: a colored-region grid with three books found and one remaining"
+              class="lb-screenshot"
+              loading="lazy"
+            />
+          </div>
+
+          <div>
+            <h2 class="lb-h2">How to play</h2>
+            <ol class="lb-steps mt-6 space-y-5">
+              <li>
+                <span class="lb-step-num">1</span>
+                <div>
+                  <p class="lb-step-head">Cross off the shelves that can&rsquo;t hold a book.</p>
+                  <p class="lb-step-body">Tap a shelf to mark it empty. Drag across a row to clear several at once.</p>
+                </div>
+              </li>
+              <li>
+                <span class="lb-step-num">2</span>
+                <div>
+                  <p class="lb-step-head">Hold to four simple rules.</p>
+                  <p class="lb-step-body">One book per row, one per column, one per color region. And no two books may touch &mdash; not even at the corners.</p>
+                </div>
+              </li>
+              <li>
+                <span class="lb-step-num">3</span>
+                <div>
+                  <p class="lb-step-head">Let the rules do the work.</p>
+                  <p class="lb-step-body">Each clue rules out shelves. Keep narrowing until only one square can possibly hold a book.</p>
+                </div>
+              </li>
+              <li>
+                <span class="lb-step-num">4</span>
+                <div>
+                  <p class="lb-step-head">Place it. Move on.</p>
+                  <p class="lb-step-body">Double-tap to set a book. Find every one and the library falls back into order.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- FEATURES -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-5xl mx-auto">
+          <div class="max-w-2xl mx-auto text-center">
+            <h2 class="lb-h2">If Sudoku is how you unwind.</h2>
+            <p class="lb-prose">
+              You already know the loop: rule out the impossible, find the
+              square that&rsquo;s left, and the next book reveals itself.
+            </p>
+          </div>
+
+          <div class="lb-feature-grid mt-8">
+            <article class="lb-feature">
+              <h3>Pick it up in one board</h3>
+              <p>Four rules. The puzzle is seeing how they overlap.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>Difficulty that climbs with you</h3>
+              <p>The first boards teach the rhythm. Later ones make you earn each book.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>Built for the in-between</h3>
+              <p>A board fits in a coffee break. Your progress waits when you set the phone down.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>Bookmarks when you&rsquo;re stuck</h3>
+              <p>Earn a bookmark for each solve, then trade them for a hint, an extra heart, or a revealed book.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- PROGRESSION -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="lb-h2">At your own pace.</h2>
+          <p class="lb-prose">
+            The game eases up when you&rsquo;re stuck and stretches when
+            you&rsquo;re sharp. No timers, no leaderboards, no one waiting on
+            you.
+          </p>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- COLLECTION -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="lb-h2">A line worth keeping, every time.</h2>
+          <p class="lb-prose">
+            Every solved board ends with a quote from the kind of book that
+            used to live on those shelves. Solve enough and you&rsquo;ll have a
+            small library of lines worth coming back to.
+          </p>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- COMFORT -->
+      <section class="lb-section px-6 py-12 md:py-16">
+        <div class="max-w-5xl mx-auto">
+          <div class="max-w-2xl mx-auto text-center">
+            <h2 class="lb-h2">Quiet by default.</h2>
+            <p class="lb-prose">
+              No timers. No leaderboards. No noise. Just the puzzle and the
+              time you wanted to spend on it.
+            </p>
+          </div>
+
+          <div class="lb-feature-grid lb-feature-grid-three mt-8">
+            <article class="lb-feature">
+              <h3>Colorblind mode</h3>
+              <p>Stronger contrast and pattern overlays for when the colors blur.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>A soundtrack you can ignore</h3>
+              <p>Quiet enough to think over, soft enough to leave on.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>The rules, a tap away</h3>
+              <p>Forgot a constraint mid-board? Pull the rules card up without leaving the puzzle.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
+
+      <!-- FINAL CTA -->
+      <section class="lb-section px-6 py-14 md:py-20">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="lb-h2">Find the lost books.</h2>
+          <p class="lb-prose mt-4">Free to download. Open a board whenever the day gives you a moment &mdash; the library will be waiting.</p>
+
+          <div class="lb-store-row mt-8 flex flex-wrap items-center gap-2 justify-center">
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+              <img
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="Download on the App Store"
+                class="h-12"
+              />
+            </a>
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+                class="h-[72px] -m-2"
+              />
+            </a>
+          </div>
+
+          <p class="lb-fineprint mt-10">
+            <a href="/privacy/lost-books">Privacy Policy</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="lb-footer px-6 py-6 text-center">
+      <p>&copy; 2011&ndash;{year} Ten October LLC &middot; <a href="/">tenoctober.com</a></p>
+    </footer>
+
+    <style is:global>
+      :root {
+        --lb-parchment: #f6efe1;
+        --lb-parchment-deep: #ece1c8;
+        --lb-ink: #3d2e23;
+        --lb-ink-soft: #5b3a26;
+        --lb-ink-muted: #8a6a52;
+        --lb-rule: rgba(91, 58, 38, 0.18);
+        --lb-panel: rgba(255, 255, 255, 0.34);
+        --lb-panel-strong: rgba(255, 255, 255, 0.42);
+        --lb-hero-overlay:
+          linear-gradient(180deg, rgba(16, 10, 8, 0.4) 0%, rgba(16, 10, 8, 0.24) 46%, rgba(16, 10, 8, 0.44) 100%),
+          radial-gradient(ellipse at top, rgba(85, 50, 28, 0.14), transparent 68%);
+        --lb-hero-ink: #fff0d6;
+        --lb-hero-muted: #f0d3ad;
+        --lb-shadow: 0 18px 40px -20px rgba(60, 35, 18, 0.35), 0 4px 14px -8px rgba(60, 35, 18, 0.25);
+      }
+
+      .lb-body {
+        background-color: var(--lb-parchment);
+        background-image:
+          url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36  0 0 0 0 0.26  0 0 0 0 0.18  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+          radial-gradient(ellipse at top, rgba(255, 240, 210, 0.5), transparent 60%);
+        background-attachment: fixed, scroll;
+        color: var(--lb-ink);
+        font-family: "EB Garamond", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+        font-size: 1.0625rem;
+        line-height: 1.6;
+      }
+
+      .lb-body a {
+        color: var(--lb-ink-soft);
+        text-decoration-color: var(--lb-rule);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        transition: color 120ms ease, text-decoration-color 120ms ease;
+      }
+      .lb-body a:hover {
+        color: #ff5200;
+        text-decoration-color: #ff5200;
+      }
+
+      /* Section + headings */
+      .lb-section { position: relative; }
+      .lb-h2 {
+        font-family: "IM Fell English SC", "Cinzel", "Trajan Pro", Georgia, serif;
+        font-weight: 400;
+        font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+        color: var(--lb-ink-soft);
+        letter-spacing: 0;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      .lb-prose {
+        font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.2rem);
+        line-height: 1.7;
+        color: var(--lb-ink);
+      }
+      .lb-h2 + .lb-prose {
+        margin-top: 1rem;
+      }
+
+      /* Hero */
+      .lb-hero {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: clamp(680px, 92vh, 940px);
+        overflow: hidden;
+        isolation: isolate;
+        background: var(--lb-parchment);
+      }
+      .lb-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--lb-hero-overlay);
+        pointer-events: none;
+      }
+      .lb-hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 48rem;
+        text-align: center;
+      }
+      .lb-hero-picture {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+      .lb-hero-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .lb-h1 {
+        font-family: "IM Fell English SC", "Cinzel", "Trajan Pro", Georgia, serif;
+        font-weight: 400;
+        color: var(--lb-hero-ink);
+        font-size: clamp(3rem, 2rem + 6vw, 6.5rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+        margin: 0;
+      }
+      .lb-subtagline {
+        font-family: "IM Fell English SC", Georgia, serif;
+        font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+        line-height: 1.25;
+        color: var(--lb-hero-ink);
+        margin-bottom: 0;
+      }
+      .lb-secondary {
+        color: var(--lb-hero-muted);
+        font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.2rem);
+        line-height: 1.65;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 42rem;
+      }
+      /* Fleuron divider */
+      .lb-fleuron {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        max-width: 28rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        color: var(--lb-ink-muted);
+      }
+      .lb-fleuron::before,
+      .lb-fleuron::after {
+        content: "";
+        flex: 1;
+        border-top: 1px solid var(--lb-rule);
+      }
+      .lb-fleuron span {
+        font-size: 1.1rem;
+        opacity: 0.7;
+      }
+
+      /* How-to-play */
+      .lb-screenshot-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .lb-screenshot {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+      }
+      @media (min-width: 768px) {
+        .lb-screenshot { max-width: 380px; }
+      }
+      .lb-steps {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .lb-steps li {
+        display: grid;
+        grid-template-columns: 2.25rem 1fr;
+        gap: 0.9rem;
+        align-items: start;
+      }
+      .lb-step-num {
+        font-family: "IM Fell English SC", Georgia, serif;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--lb-ink-soft);
+        border: 1px solid var(--lb-rule);
+        border-radius: 999px;
+        width: 2.25rem;
+        height: 2.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--lb-panel-strong);
+      }
+      .lb-step-head {
+        font-family: "IM Fell English SC", Georgia, serif;
+        color: var(--lb-ink-soft);
+        font-size: 1.15rem;
+        margin: 0;
+      }
+      .lb-step-body {
+        margin: 0.15rem 0 0;
+        color: var(--lb-ink);
+      }
+
+      /* Feature blocks */
+      .lb-feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 720px) {
+        .lb-feature-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .lb-feature-grid-three {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .lb-feature {
+        border: 1px solid var(--lb-rule);
+        border-radius: 8px;
+        background: var(--lb-panel);
+        padding: 1.2rem;
+      }
+      .lb-feature h3 {
+        font-family: "IM Fell English SC", Georgia, serif;
+        color: var(--lb-ink-soft);
+        font-size: 1.2rem;
+        line-height: 1.2;
+        letter-spacing: 0;
+        margin: 0;
+      }
+      .lb-feature p {
+        color: var(--lb-ink);
+        margin: 0.45rem 0 0;
+      }
+
+      /* Fineprint + footer */
+      .lb-fineprint {
+        font-size: 0.85rem;
+        color: var(--lb-ink-muted);
+      }
+      .lb-footer {
+        color: var(--lb-ink-muted);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--lb-rule);
+        margin-top: 2rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --lb-parchment: #17110e;
+          --lb-parchment-deep: #241914;
+          --lb-ink: #f2e6d2;
+          --lb-ink-soft: #f0cfa4;
+          --lb-ink-muted: #c8aa87;
+          --lb-rule: rgba(240, 207, 164, 0.22);
+          --lb-panel: rgba(255, 238, 205, 0.07);
+          --lb-panel-strong: rgba(255, 238, 205, 0.1);
+          --lb-hero-overlay:
+            linear-gradient(180deg, rgba(12, 9, 9, 0.34) 0%, rgba(12, 9, 9, 0.2) 46%, rgba(12, 9, 9, 0.4) 100%),
+            radial-gradient(ellipse at top, rgba(78, 49, 31, 0.12), transparent 68%);
+          --lb-hero-ink: #fff0d6;
+          --lb-hero-muted: #f0d3ad;
+          --lb-shadow: 0 24px 58px -24px rgba(0, 0, 0, 0.72), 0 6px 18px -10px rgba(0, 0, 0, 0.65);
+        }
+
+        .lb-body {
+          background-image:
+            url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.78  0 0 0 0 0.52  0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+            radial-gradient(ellipse at top, rgba(83, 54, 36, 0.48), transparent 62%);
+          color-scheme: dark;
+        }
+      }
+    </style>
+  </body>
+</html>
