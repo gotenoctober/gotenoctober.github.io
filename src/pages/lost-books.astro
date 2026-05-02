@@ -5,7 +5,7 @@ import PostHog from "../components/posthog.astro";
 
 const year = new Date().getFullYear();
 
-const description = "A cozy logic puzzle for Sudoku lovers. Find the missing books in a paper-cutout library — no timers, no guessing, just deduction.";
+const description = "A cozy logic puzzle for Sudoku lovers. Someone shelved the books all wrong — use logic to put them back.";
 const canonical = "https://tenoctober.com/lost-books";
 const ogImage = "https://tenoctober.com/lost-books/hero.jpg";
 
@@ -84,19 +84,23 @@ const jsonLd = {
           <h1 class="lb-h1">Hide &amp; Seek: Lost Books</h1>
           <p class="lb-subtagline mt-5">A cozy logic puzzle for Sudoku lovers.</p>
           <p class="lb-secondary mt-4">
-            Books have gone missing from the shelves. Find every one &mdash;
-            no timers, no guesswork, just deduction.
+            The new librarian shelved everything wrong last night. Books
+            are in the wrong rows, stuffed into the wrong sections &mdash;
+            the whole library is out of order.
+          </p>
+          <p class="lb-secondary mt-3">
+            Your job is to sort it all out. Take as long as you like.
           </p>
 
           <div class="lb-store-row mt-7 flex flex-wrap items-center gap-2 justify-center">
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store" data-ph-store="app_store" data-ph-location="hero">
               <img
                 src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                 alt="Download on the App Store"
                 class="h-12"
               />
             </a>
-            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play" data-ph-store="play_store" data-ph-location="hero">
               <img
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
@@ -106,20 +110,6 @@ const jsonLd = {
           </div>
         </div>
       </section>
-
-      <!-- PREMISE -->
-      <section class="lb-section px-6 py-12 md:py-16">
-        <div class="max-w-2xl mx-auto text-center">
-          <h2 class="lb-h2">The library is out of order.</h2>
-          <p class="lb-prose">
-            The books have hidden themselves on the shelves. Read the room
-            &mdash; the colors, the rows, the gaps between &mdash; and put each
-            one back where it belongs.
-          </p>
-        </div>
-      </section>
-
-      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
 
       <!-- HOW TO PLAY -->
       <section class="lb-section px-6 py-12 md:py-16">
@@ -140,7 +130,7 @@ const jsonLd = {
                 <span class="lb-step-num">1</span>
                 <div>
                   <p class="lb-step-head">Cross off the shelves that can&rsquo;t hold a book.</p>
-                  <p class="lb-step-body">Tap a shelf to mark it empty. Drag across a row to clear several at once.</p>
+                  <p class="lb-step-body">Most shelves are empty. The trick is figuring out which ones aren&rsquo;t.</p>
                 </div>
               </li>
               <li>
@@ -154,14 +144,14 @@ const jsonLd = {
                 <span class="lb-step-num">3</span>
                 <div>
                   <p class="lb-step-head">Let the rules do the work.</p>
-                  <p class="lb-step-body">Each clue rules out shelves. Keep narrowing until only one square can possibly hold a book.</p>
+                  <p class="lb-step-body">Each rule crosses off a few more squares. Keep eliminating until only one spot is left.</p>
                 </div>
               </li>
               <li>
                 <span class="lb-step-num">4</span>
                 <div>
                   <p class="lb-step-head">Place it. Move on.</p>
-                  <p class="lb-step-body">Double-tap to set a book. Find every one and the library falls back into order.</p>
+                  <p class="lb-step-body">Double-tap to place a book. Find every one and the library falls back into order.</p>
                 </div>
               </li>
             </ol>
@@ -184,78 +174,36 @@ const jsonLd = {
 
           <div class="lb-feature-grid mt-8">
             <article class="lb-feature">
-              <h3>Pick it up in one board</h3>
-              <p>Four rules. The puzzle is seeing how they overlap.</p>
+              <h3>One board is all it takes</h3>
+              <p>Four rules. You&rsquo;ll have them down before your first solve.</p>
             </article>
             <article class="lb-feature">
               <h3>Difficulty that climbs with you</h3>
-              <p>The first boards teach the rhythm. Later ones make you earn each book.</p>
+              <p>Boards start small and grow as you do. Hit a wall and the game eases up until you find your feet again.</p>
             </article>
             <article class="lb-feature">
               <h3>Built for the in-between</h3>
               <p>A board fits in a coffee break. Your progress waits when you set the phone down.</p>
             </article>
             <article class="lb-feature">
-              <h3>Bookmarks when you&rsquo;re stuck</h3>
-              <p>Earn a bookmark for each solve, then trade them for a hint, an extra heart, or a revealed book.</p>
+              <h3>A line worth keeping</h3>
+              <p>Finish a puzzle and the book you found shares a line &mdash; Marcus Aurelius, Jane Austen, Rumi, and scores more.</p>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
-
-      <!-- PROGRESSION -->
-      <section class="lb-section px-6 py-12 md:py-16">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="lb-h2">At your own pace.</h2>
-          <p class="lb-prose">
-            The game eases up when you&rsquo;re stuck and stretches when
-            you&rsquo;re sharp. No timers, no leaderboards, no one waiting on
-            you.
-          </p>
-        </div>
-      </section>
-
-      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
-
-      <!-- COLLECTION -->
-      <section class="lb-section px-6 py-12 md:py-16">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="lb-h2">A line worth keeping, every time.</h2>
-          <p class="lb-prose">
-            Every solved board ends with a quote from the kind of book that
-            used to live on those shelves. Solve enough and you&rsquo;ll have a
-            small library of lines worth coming back to.
-          </p>
-        </div>
-      </section>
-
-      <div class="lb-fleuron" aria-hidden="true"><span>&#10086;</span></div>
-
-      <!-- COMFORT -->
-      <section class="lb-section px-6 py-12 md:py-16">
-        <div class="max-w-5xl mx-auto">
-          <div class="max-w-2xl mx-auto text-center">
-            <h2 class="lb-h2">Quiet by default.</h2>
-            <p class="lb-prose">
-              No timers. No leaderboards. No noise. Just the puzzle and the
-              time you wanted to spend on it.
-            </p>
-          </div>
-
-          <div class="lb-feature-grid lb-feature-grid-three mt-8">
+            <article class="lb-feature">
+              <h3>Earn as you go</h3>
+              <p>Every solve earns a bookmark. Spend them on hints, extra hearts, or a revealed book.</p>
+            </article>
+            <article class="lb-feature">
+              <h3>Always another shelf</h3>
+              <p>Puzzles are generated fresh each time. You won&rsquo;t run out.</p>
+            </article>
             <article class="lb-feature">
               <h3>Colorblind mode</h3>
-              <p>Stronger contrast and pattern overlays for when the colors blur.</p>
+              <p>High-contrast colors and pattern overlays so the board stays readable without relying on color alone.</p>
             </article>
             <article class="lb-feature">
-              <h3>A soundtrack you can ignore</h3>
-              <p>Quiet enough to think over, soft enough to leave on.</p>
-            </article>
-            <article class="lb-feature">
-              <h3>The rules, a tap away</h3>
-              <p>Forgot a constraint mid-board? Pull the rules card up without leaving the puzzle.</p>
+              <h3>Music for the mood</h3>
+              <p>A warm soundtrack that settles in behind the puzzle. You&rsquo;ll want to leave it on.</p>
             </article>
           </div>
         </div>
@@ -267,17 +215,17 @@ const jsonLd = {
       <section class="lb-section px-6 py-14 md:py-20">
         <div class="max-w-2xl mx-auto text-center">
           <h2 class="lb-h2">Find the lost books.</h2>
-          <p class="lb-prose mt-4">Free to download. Open a board whenever the day gives you a moment &mdash; the library will be waiting.</p>
+          <p class="lb-prose mt-4">Free to download. Open a board whenever you have a few minutes &mdash; the library will be waiting.</p>
 
           <div class="lb-store-row mt-8 flex flex-wrap items-center gap-2 justify-center">
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store" data-ph-store="app_store" data-ph-location="cta">
               <img
                 src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                 alt="Download on the App Store"
                 class="h-12"
               />
             </a>
-            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play">
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play" data-ph-store="play_store" data-ph-location="cta">
               <img
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
@@ -296,6 +244,17 @@ const jsonLd = {
     <footer class="lb-footer px-6 py-6 text-center">
       <p>&copy; 2011&ndash;{year} Ten October LLC &middot; <a href="/">tenoctober.com</a></p>
     </footer>
+
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[data-ph-store]');
+        if (!link) return;
+        window.posthog?.capture('download_clicked', {
+          store: link.dataset.phStore,
+          location: link.dataset.phLocation
+        });
+      });
+    </script>
 
     <style is:global>
       :root {
@@ -504,9 +463,6 @@ const jsonLd = {
       @media (min-width: 720px) {
         .lb-feature-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        .lb-feature-grid-three {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
       .lb-feature {
