@@ -39,6 +39,26 @@ The `functions/` directory is a [Cloudflare Pages Functions](https://developers.
 - `public/robots.txt` and `public/app-ads.txt` are served as-is.
 - The Lost Books page is the primary SEO target — keep its JSON-LD, canonical, OG, and Twitter tags consistent when editing copy or images.
 
+### PostHog analytics
+
+`src/components/posthog.astro` is the reusable PostHog snippet (inlined, reads `PUBLIC_POSTHOG_PROJECT_TOKEN` and `PUBLIC_POSTHOG_HOST` from env). Every page that needs analytics imports it in `<head>`. Both env vars are in `.env` (gitignored); on Cloudflare they must be set as Pages environment variables.
+
+**Client-side events** are captured via `window.posthog?.capture()` with `data-ph-*` attributes for event delegation:
+
+| Event | Properties | Pages |
+|---|---|---|
+| `download_clicked` | `store` (`app_store` \| `play_store`), `location` (`hero` \| `cta` \| `homepage`) | `lost-books.astro`, `index.astro` |
+| `learn_more_clicked` | — | `index.astro` |
+| `get_in_touch_clicked` | — | `index.astro` |
+
+**Server-side events** — `functions/lost-books/download.ts` fires a fire-and-forget `POST` to PostHog's `/e/` endpoint on every redirect so the smart-link redirector gets its own tracking even without JavaScript:
+
+| Event | Properties | Where |
+|---|---|---|
+| `download_redirect` | `platform` (`ios` \| `android` \| `fallback`), `destination`, `user_agent`, `referer` | `functions/lost-books/download.ts` |
+
+When adding new events, follow the `snake_case` naming convention and keep the table above up to date.
+
 ## Conventions
 
 - Astro pages use frontmatter `---` for any imports/logic; everything else is HTML + Tailwind/DaisyUI utility classes (`btn`, `card`, `footer`, etc.).
